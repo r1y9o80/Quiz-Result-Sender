@@ -1,0 +1,4 @@
+# .gitignore
+bot-env/
+__pycache__/
+.env
