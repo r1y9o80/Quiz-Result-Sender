@@ -5,6 +5,11 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return 'Hello, world!'
+
+
 @app.route('/webhook', methods=["POST"])
 def getQuiz_fetch():
     # get_json()を使う
