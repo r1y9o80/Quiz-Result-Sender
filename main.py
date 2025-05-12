@@ -13,7 +13,7 @@ def getQuiz_fetch():
         data = request.get_json()  # 修正: request.json() -> request.get_json()
         message = data.get('message', 'No message')  # 修正: get_json() は不要
         send_QuizResult(message)
-        return "The data is perfectly sent.",200
+        return "The data has been perfectly sent.",200
     except Exception as e:
         print(f"Error: {e}")
         return f"Error: {e}", 500
