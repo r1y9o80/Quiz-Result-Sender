@@ -2,14 +2,21 @@ import requests
 from dotenv import load_dotenv
 import os
 from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/webhook', methods=["POST"])
 def getQuiz_fetch():
-    data = request.get_json()  # 修正: request.json() -> request.get_json()
-    message = data.get('message', 'No message')  # 修正: get_json() は不要
-    send_QuizResult(message)
+    try:
+        data = request.get_json()  # 修正: request.json() -> request.get_json()
+        message = data.get('message', 'No message')  # 修正: get_json() は不要
+        send_QuizResult(message)
+        return "OK",200
+    except Exception as e:
+        print(f"Error: {e}")
+        return f"Error: {e}", 500
 
 def send_QuizResult(textContent):
     load_dotenv()
