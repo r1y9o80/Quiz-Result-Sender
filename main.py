@@ -15,6 +15,8 @@ def getQuiz_fetch():
         data = request.get_json()  # 修正: request.json() -> request.get_json()
         header = data.get('header')
         message = data.get('body')  # 修正: get_json() は不要
+        print(header)
+        print(message)
         send_QuizResult(header, message)
         return "The data has been perfectly sent.",200
     except Exception as e:
